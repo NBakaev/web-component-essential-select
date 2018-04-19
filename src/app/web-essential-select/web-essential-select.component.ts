@@ -2,6 +2,7 @@ import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {EssentialSelectComponent} from 'angular-essential-select';
 
 const EVENT_ESSENTIAL_SELECT_CHANGE = 'ESSENTIAL_SELECT_CHANGE';
+const EVENT_ESSENTIAL_SELECT_INIT = 'ESSENTIAL_SELECT_INIT';
 
 @Component({
   selector: 'web-essential-select',
@@ -24,18 +25,25 @@ export class WebEssentialSelectComponent implements OnInit {
 
   public value = 'herp derp';
 
-  select(val) {
+  @Input()
+  set select(val) {
     this.es.value = val;
     this.es.ngDoCheck();
   }
 
-  constructor(private readonly element: ElementRef) { }
+  constructor(private readonly element: ElementRef) {
+  }
 
   ngOnInit() {
+    this.sentEvent(EVENT_ESSENTIAL_SELECT_INIT, {component: this, element: this.element});
   }
 
   onChange($event) {
-    (this.element.nativeElement as Element).dispatchEvent(new CustomEvent(EVENT_ESSENTIAL_SELECT_CHANGE, { bubbles: true, detail: { newValue: $event } }));
+    this.sentEvent(EVENT_ESSENTIAL_SELECT_CHANGE, $event);
+  }
+
+  private sentEvent(name: string, data: any) {
+    (this.element.nativeElement as Element).dispatchEvent(new CustomEvent(name, { bubbles: true, detail: { newValue: data } }));
   }
 
 }

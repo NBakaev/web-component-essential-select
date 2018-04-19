@@ -26,7 +26,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prepublishOnly": "npm run build && gulp"
+    "prepublishOnly_": "npm run build && gulp"
   },
   "dependencies": {
     "@angular/animations": "^6.0.0-rc.5",

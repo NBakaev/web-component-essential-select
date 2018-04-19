@@ -8,15 +8,38 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-   <web-essential-select id="test-es"></web-essential-select>
+   <web-essential-select id="test-es" select></web-essential-select>
+
+   <br><br>
+   <button class="btn" id="selectOptionOne">Select option one</button>
+   <button class="btn" id="unsetBtn">Unset</button>
+
 </body>
 
 <script>
+  let es = document.getElementById('test-es');
+
+  let btnListener = () => {
+    document.getElementById("selectOptionOne").addEventListener("click", () => {
+      es.select = "option 1";
+    });
+    document.getElementById("unsetBtn").addEventListener("click", () => {
+      es.select = "";
+    });
+  };
+
+  es.addEventListener('EVENT_ESSENTIAL_SELECT_INIT', (data) => {
+    console.info("EVENT_ESSENTIAL_SELECT_INIT");
+    console.log('EVENT_ESSENTIAL_SELECT_INIT', data.detail);
+  });
+
   document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('test-es').addEventListener('ESSENTIAL_SELECT_CHANGE', (data) => {
+    es.addEventListener('ESSENTIAL_SELECT_CHANGE', (data) => {
       console.log('ESSENTIAL_SELECT_CHANGE', data.detail);
-    })
+    });
+    btnListener();
   }, false);
+
 </script>
 
 </html>
