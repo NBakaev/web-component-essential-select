@@ -1,0 +1,11 @@
+<div>
+
+  <essential-select [options]="options" #es
+                    [(value)]="value"
+                    [placeholder]="'Click me'"
+                    [required]="true"
+                    (valueChange)="onChange($event)"
+                    [invalidText]="'Please select value!'">
+  </essential-select>
+
+</div>
