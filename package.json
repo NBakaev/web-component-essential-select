@@ -1,6 +1,6 @@
 {
-  "name": "angular-made-with-love",
-  "version": "1.0.9",
+  "name": "web-essential-select",
+  "version": "0.0.1",
   "license": "MIT",
   "author": "Nikita Bakaev",
   "description": "An experimental custom element from angular-essential-select",
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nitayneeman/made-with-love.git"
+    "url": "https://github.com/NBakaev/web-component-essential-select.git"
   },
   "scripts": {
     "ng": "ng",
